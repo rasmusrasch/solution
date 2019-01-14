@@ -1,0 +1,143 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication27;
+import java.util.ArrayList;
+/**
+ *
+ * @author Rawmouse
+ */
+public class JavaApplication27 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ArrayList<Matrisen> m = new ArrayList<Matrisen>();
+        
+        
+        
+        char [][] matrix = {{'f','f','f','f'},{'t','t','f','t'},{'f','f','f','f'},{'f','f','f','f'}}; //Matrisen. 
+        Matrisen a = new Matrisen();
+        m.add(a);
+        
+        
+        int start_pos_x = 3; //start x
+        int start_pos_y = 0; //start y
+        
+        
+        int finish_pos_x = 0; //start x
+        int finish_pos_y = 0; //start y
+    
+     
+       System.out.print( m.get(0).find_path(matrix, start_pos_x, start_pos_y, finish_pos_x, finish_pos_y));
+        
+        
+        
+    }
+    static class Matrisen
+    {
+        int a = 1;
+        
+        public void test()
+        {
+          System.out.print( "test");
+        }
+        
+        public int find_path(char [][] matrix, int start_x, int start_y, int finish_x, int finish_y )
+        {
+            int current_pos_x = start_x;
+            int current_pos_y = start_y;
+            
+            int prev_pos_x=15;
+            int prev_pos_y=15;
+            
+            int number_of_steps = 0;
+            
+            while(current_pos_y != finish_y || current_pos_x != finish_x)
+            {
+            try{if(matrix[current_pos_x-1][current_pos_y] == 'f' )
+                    {
+                        if(prev_pos_x!=current_pos_x-1)
+                        {
+                        prev_pos_x=current_pos_x;
+                        prev_pos_y=current_pos_y;
+                            current_pos_x = current_pos_x-1;
+                            current_pos_y = current_pos_y;
+                            number_of_steps++;
+                        }
+                    }}catch(IndexOutOfBoundsException e){}try{if (matrix[current_pos_x][current_pos_y-1] == 'f')
+                    {
+
+                       if(prev_pos_y!=current_pos_y-1)
+                       {
+                            current_pos_x = current_pos_x;
+                            prev_pos_x=current_pos_x;
+                            prev_pos_y=current_pos_y;
+                            current_pos_y = current_pos_y-1;
+                            number_of_steps++;
+                            
+                       }    
+                            
+                            
+                    }}catch(IndexOutOfBoundsException e){}
+                try{if (matrix[current_pos_x][current_pos_y+1] == 'f')
+                    {
+
+                       if(prev_pos_y!=current_pos_y+1)
+                       {
+                            current_pos_x = current_pos_x;
+                            prev_pos_x=current_pos_x;
+                            prev_pos_y=current_pos_y;
+                            current_pos_y = current_pos_y+1;
+                            number_of_steps++;
+                       }    
+                            
+                            
+                    }}catch(IndexOutOfBoundsException e){}
+                
+                
+                
+                
+                /*if(matrix[current_pos_x+1][current_pos_y] == 'f' )
+                    {System.out.printf("::::" + matrix[current_pos_x+1][current_pos_y]);
+                        if(prev_pos_x!=current_pos_x+1)
+                        {
+                        prev_pos_x=current_pos_x;
+                        prev_pos_y=current_pos_y;
+                            current_pos_x = current_pos_x+1;
+                            current_pos_y = current_pos_y;
+                            number_of_steps++;
+                        }
+                    }
+                        */
+                
+                
+                
+                
+                    
+                    
+                    
+                    
+                    
+            
+            
+                
+                
+                
+            }
+            
+            
+            System.out.print("Number of steps: ");
+            return number_of_steps;
+            
+            
+            
+
+        }
+    }
+    
+}
